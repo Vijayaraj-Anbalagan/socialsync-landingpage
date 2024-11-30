@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Services() {
   return (
-    <div id="contact" className="flex items-center justify-center bg-white px-12 py-12 text-black">
+    <div id="contact" className="flex items-center justify-center bg-white p-10 text-black">
       <EnquiryCard
         tag="/ Enquiries"
         text={

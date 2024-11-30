@@ -4,7 +4,7 @@ import NumberTicker from "../ui/number-ticker";
 
 const Metrics = () => {
   return (
-    <div id="metrics" className="p-2 lg:p-20 sm:p-10">
+    <div id="metrics" className="p-6 mb-5 lg:p-20 sm:p-10">
       <p className="text-center text-4xl font-bold mb-12 dark:text-white">Our Achievements</p>
       <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
       <Card
