@@ -17,6 +17,9 @@ export default function Services() {
           "Do you offer custom branding strategies?",
           "What is included in your social media marketing packages?",
           "How do I start a project with SocialSync?",
+          "What is the process for creating a new website?",
+          "Can you help me with my SEO?",
+          "Can you help me with poster design?",
         ]}
       />
     </div>
@@ -39,7 +42,10 @@ const EnquiryCard: React.FC<{ tag: string; text: React.ReactNode; examples: stri
         <Typewriter examples={examples} />
         <hr className="border-neutral-300" />
       </div>
-      <button className="w-full rounded-full border border-black py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white">
+      <button
+        className="w-full rounded-full border border-black py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white"
+        onClick={() => window.location.href = "mailto:socialsync.smm@gmail.com"}
+      >
         Contact Us
       </button>
     </div>
