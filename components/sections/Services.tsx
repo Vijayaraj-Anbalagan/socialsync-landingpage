@@ -48,7 +48,7 @@ const BounceCard = ({
       whileHover={{ scale: 1.05, rotate: "-1deg" }}
       className="group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 shadow-lg"
     >
-      <h3 className="text-3xl font-semibold text-center group-hover: transition-opacity duration-300">
+      <h3 className="text-xl font-semibold text-center group-hover: transition-opacity duration-300">
         {title}
       </h3>
       <div

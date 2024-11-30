@@ -4,29 +4,29 @@ import NumberTicker from "../ui/number-ticker";
 
 const Metrics = () => {
   return (
-    <div id="metrics" className="p-20">
+    <div id="metrics" className="p-2 lg:p-20 sm:p-10">
       <p className="text-center text-4xl font-bold mb-12 dark:text-white">Our Achievements</p>
       <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-        <Card
-          title="50"
-          subtitle="Successful Projects"
-          Icon={FiBriefcase}
-        />
-        <Card
-          title="15"
-          subtitle="Trusted Clients"
-          Icon={FiUsers}
-        />
-        <Card
-          title="10"
-          subtitle="Team Members"
-          Icon={FiAward}
-        />
-        <Card
-          title="2"
-          subtitle="Years of Experience"
-          Icon={FiClock}
-        />
+      <Card
+        title="50"
+        subtitle="Successful Projects"
+        Icon={FiBriefcase}
+      />
+      <Card
+        title="15"
+        subtitle="Trusted Clients"
+        Icon={FiUsers}
+      />
+      <Card
+        title="10"
+        subtitle="Team Members"
+        Icon={FiAward}
+      />
+      <Card
+        title="2"
+        subtitle="Years of Experience"
+        Icon={FiClock}
+      />
       </div>
     </div>
   );

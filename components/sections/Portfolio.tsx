@@ -174,7 +174,7 @@ export const SwipeCarousel = () => {
       </motion.div>
 
       <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
-      <GradientEdges />
+      
     </div>
   );
 };
@@ -223,18 +223,10 @@ const Dots: React.FC<DotsProps> = ({ imgIndex, setImgIndex }) => {
           key={idx}
           onClick={() => setImgIndex(idx)}
           className={`h-3 w-3 rounded-full transition-colors ${
-            idx === imgIndex ? "bg-blue-500" : "bg-neutral-500"
+            idx === imgIndex ? "bg-blue-500" : "bg-neutral-300"
           }`}
         />
       ))}
     </div>
-  );
-};
-
-const GradientEdges = () => {
-  return (
-    <>
-    
-     </>
   );
 };
