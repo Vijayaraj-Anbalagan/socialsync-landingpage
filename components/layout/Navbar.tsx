@@ -10,6 +10,7 @@ import {
   SheetTitle 
 } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -32,10 +33,10 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full bg-white/30 backdrop-blur-lg z-50 py-3 px-6 shadow-sm rounded-full border border-white/20"
+      className="fixed w-full bg-white/30 dark:bg-black backdrop-blur-lg z-50 py-3 px-6 shadow-sm rounded-full border border-white/20 dark:border-gray-800/20"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <a href="#" className="text-2xl font-bold">
+        <a href="#" className="text-2xl font-bold dark:text-white">
           SocialSync
         </a>
 
@@ -45,42 +46,46 @@ export default function Navbar() {
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href)}
-              className="text-black font-semibold hover:text-black transition-colors"
+              className="text-black dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors"
             >
               {link.name}
             </button>
           ))}
+          <ThemeToggle />
           <Button 
            onClick={() => scrollToSection("#contact")}
-           className="bg-black text-white hover:bg-gray-800 rounded-full">
+           className="bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-full">
             Contact us
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent className="bg-white">
-            <SheetTitle className="text-xl font-bold mb-4 ">Navigation</SheetTitle>
+          <div className="flex items-center space-x-2 md:hidden">
+            <ThemeToggle />
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+          </div>
+          <SheetContent className="bg-white dark:bg-gray-900">
+            <SheetTitle className="text-xl font-bold mb-4 dark:text-white">Navigation</SheetTitle>
             <div className="flex flex-col space-y-4 mt-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-lg text-gray-600 hover:text-black transition-colors text-left"
+                  className="text-lg text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-left"
                 >
                   {link.name}
                 </button>
               ))}
-                <Button 
+              <Button 
                 onClick={() => scrollToSection("#contact")}
-                className="bg-black text-white hover:bg-gray-800 w-full rounded-full">
+                className="bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 w-full rounded-full">
                 Contact us
-                </Button>
+              </Button>
             </div>
           </SheetContent>
         </Sheet>

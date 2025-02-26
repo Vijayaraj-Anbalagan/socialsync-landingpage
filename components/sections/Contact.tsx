@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Services() {
   return (
-    <div id="contact" className="flex items-center justify-center bg-white p-10 text-black">
+    <div id="contact" className="flex items-center justify-center bg-white p-10 text-black dark:bg-black dark:text-white">
       <EnquiryCard
         tag="/ Enquiries"
         text={
@@ -43,7 +43,7 @@ const EnquiryCard: React.FC<{ tag: string; text: React.ReactNode; examples: stri
         <hr className="border-neutral-300" />
       </div>
       <button
-        className="w-full rounded-full border border-black py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white"
+        className="w-full rounded-full border border-black py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white dark:bg-white dark:text-black dark:hover:bg-gray-200"
         onClick={() => window.location.href = "mailto:socialsync.smm@gmail.com"}
       >
         Contact Us

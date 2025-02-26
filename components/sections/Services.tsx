@@ -12,7 +12,7 @@ const services = [
     icon: Palette,
   },
   {
-    title: "Website Development",
+    title: "Website Dev",
     description: "Building responsive and performant web applications.",
     gradient: "from-blue-400 to-indigo-400", // Transitioning into indigo
     icon: Monitor,
@@ -46,9 +46,9 @@ const BounceCard = ({
   return (
     <motion.div
       whileHover={{ scale: 1.05, rotate: "-1deg" }}
-      className="group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 shadow-lg"
+      className="group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] p-8 shadow-lg"
     >
-      <h3 className="text-xl font-semibold text-center group-hover: transition-opacity duration-300">
+      <h3 className="text-xl md:text-2xl font-semibold text-center group-hover: transition-opacity duration-300">
         {title}
       </h3>
       <div
@@ -65,7 +65,7 @@ const BounceCard = ({
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 px-6 bg-gray-50">
+    <section id="services" className="py-20 px-6 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8">
           <h2 className="max-w-lg text-4xl font-bold md:text-5xl ml-1">

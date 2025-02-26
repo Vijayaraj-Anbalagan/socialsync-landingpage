@@ -9,6 +9,7 @@ import Metrics from "@/components/sections/Metrics";
 import ContactUs from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   useEffect(() => {
@@ -38,6 +39,33 @@ export default function Home() {
        
       <Navbar />
       <Hero />
+      
+<div className="absolute inset-0">
+  <motion.div
+    className="absolute top-0 left-1/4 transform -translate-x-1/2 w-[40vw] h-[40vw] bg-pink-300 dark:bg-pink-700/50 opacity-40 rounded-full filter blur-3xl"
+    animate={{
+      x: ["-50%", "50%", "-50%"],
+      y: ["-50%", "50%", "-50%"],
+    }}
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "reverse",
+    }}
+  ></motion.div>
+  <motion.div
+    className="absolute bottom-0 right-1/4 transform translate-x-1/2 w-[40vw] h-[40vw] bg-blue-200 dark:bg-blue-900/50 opacity-40 rounded-full filter blur-3xl"
+    animate={{
+      x: ["50%", "-50%", "50%"],
+      y: ["50%", "-50%", "50%"],
+    }}
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "reverse",
+    }}
+  ></motion.div>
+</div>
       <Services />
       <Portfolio />
       <Testimonials />

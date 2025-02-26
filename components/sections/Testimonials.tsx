@@ -68,7 +68,7 @@ const TestimonialCard = ({
     >
       <div className="flex flex-row items-center gap-2">
         <img className="rounded-full" width="40" height="40" alt={name} src={image} />
-        <div className="flex flex-col">
+        <div className="flex flex-col items-start">
           <figcaption className="text-sm font-medium dark:text-white">
             {name}
           </figcaption>
@@ -84,7 +84,7 @@ const TestimonialCard = ({
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 px-4 bg-gray-50 dark:bg-gray-900">
+    <section id="testimonials" className="py-20 px-4 bg-gray-50 dark:bg-black">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-12 dark:text-white">
           What Our Clients Say

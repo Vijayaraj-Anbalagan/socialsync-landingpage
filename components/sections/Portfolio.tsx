@@ -9,7 +9,7 @@ export default function Portfolio() {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1224 });
 
   return (
-    <section id="portfolio" className="pt-10 px-4">
+    <section id="portfolio" className="pt-10 px-4 dark:bg-black">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">Our Work.</h2>
       {isDesktopOrLaptop ? <HorizontalScrollCarousel /> : <SwipeCarousel />}
@@ -27,7 +27,7 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className={`relative h-[300vh]`}>
+    <section ref={targetRef} className={`relative h-[300vh] dark:bg-black`}>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
       
         <motion.div style={{ x }} className="flex gap-4">
