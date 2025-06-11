@@ -11,7 +11,7 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="pt-10 px-4 dark:bg-black">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-8">Our Work.</h2>
+        <h2 className="text-4xl font-bold leading-tight tracking-tight text-center mb-8">Our Work.</h2>
       {isDesktopOrLaptop ? <HorizontalScrollCarousel /> : <SwipeCarousel />}
       </div>
     </section>

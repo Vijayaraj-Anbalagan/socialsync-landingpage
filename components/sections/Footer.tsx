@@ -1,14 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Instagram } from "lucide-react";
 import SparklesText from "../ui/sparkles-text";
 
 const socialLinks = [
   {
-    icon: Twitter,
-    href: "https://twitter.com/socialsync",
-    label: "Twitter",
+    icon: Instagram,
+    href: "https://instagram.com/socialsync",
+    label: "Instagram",
   },
   {
     icon: Linkedin,
@@ -39,8 +39,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8">
           {/* Left: Logo/Brand */}
           <div className="text-center md:text-left">
-            <SparklesText className="text-3xl font-bold" text="SocialSync" />
-            <p className="text-gray-600 mt-2 dark:text-gray-300">Your Digital Partner for Tailored Solutions</p>
+            <SparklesText className="text-3xl font-bold leading-none tracking-tight" text="SocialSync" />
+            <p className="text-gray-600 mt-2 font-medium leading-tight tracking-tight dark:text-gray-300">Your Digital Partner for Tailored Solutions</p>
           </div>
 
           {/* Center: Quick Links */}
@@ -50,7 +50,7 @@ export default function Footer() {
                 key={link.id}
                 variant="link"
                 onClick={() => scrollToSection(link.id)}
-                className="text-gray-600 hover:text-black transition-colors dark:text-gray-200"
+                className="text-gray-600 hover:text-black font-medium leading-tight tracking-tight transition-colors dark:text-gray-200"
               >
                 {link.name}
               </Button>
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright Notice */}
-        <div className="text-center text-gray-600 text-sm border-t border-gray-100 dark:border-gray-900 pt-8 dark:text-gray-300">
+        <div className="text-center text-gray-600 text-sm font-medium leading-tight tracking-tight border-t border-gray-100 dark:border-gray-900 pt-8 dark:text-gray-300">
           © {new Date().getFullYear()} SocialSync. All rights reserved.
         </div>
       </div>

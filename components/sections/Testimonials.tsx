@@ -4,39 +4,39 @@ import { cn } from "@/lib/utils";
 import Marquee from '@/components/ui/marquee';
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "CEO",
-    company: "TechStart Inc.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    quote: "SocialSync transformed our digital presence. Their team delivered beyond our expectations.",
+    name: "John Rodriguez",
+    role: "Founder & CEO",
+    company: "DaaSye",
+    image: "https://avatar.vercel.sh/john",
+    quote: "SocialSync elevated our brand with a sleek website and impactful digital marketing. Their SEO and social media management delivered outstanding visibility and engagement.",
   },
   {
-    name: "Michael Chen",
-    role: "Marketing Director",
-    company: "Growth Labs",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-    quote: "Professional, creative, and highly skilled team. They helped us achieve our goals.",
+    name: "Graceson Tony",
+    role: "Founder & CEO",
+    company: "Baeonn",
+    image: "https://avatar.vercel.sh/graceson",
+    quote: "SocialSync transformed our online presence with a powerful website and digital strategy. Their SEO, creative media, and social handling brought amazing engagement and growth!",
   },
   {
-    name: "Emma Williams",
+    name: "Vijayaraja K",
     role: "Founder",
-    company: "Digital First",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    quote: "Outstanding service and results. SocialSync is our go-to digital partner.",
+    company: "GS Educational Trust",
+    image: "https://avatar.vercel.sh/vijay",
+    quote: "SocialSync created a meaningful digital presence for our trust. Their website and SEO services helped us reach and impact more lives in our community.",
   },
   {
-    name: "Jack Anderson",
-    role: "Product Manager",
-    company: "InnovateX",
-    image: "https://avatar.vercel.sh/jack",
-    quote: "Working with SocialSync was seamless and efficient. Highly recommend them!",
+    name: "Logeshwaran",
+    role: "Founder & CEO",
+    company: "Dashagriv",
+    image: "https://avatar.vercel.sh/logesh",
+    quote: "SocialSync brought our vision to life with a stunning website, smart AI solutions, and seamless workspace management. Their branding and SEO support exceeded expectations!",
   },
   {
-    name: "Alice Brown",
-    role: "Creative Lead",
-    company: "DesignPro",
-    image: "https://avatar.vercel.sh/alice",
-    quote: "SocialSync truly understands the essence of digital transformation. A brilliant team!",
+    name: "Hariharan",
+    role: "Founder",
+    company: "Machmayers",
+    image: "https://avatar.vercel.sh/hari",
+    quote: "SocialSync's team delivered exceptional results for our website, SEO, and digital marketing needs. Their creative work on posters and video editing helped us reach new heights!",
   },
 ];
 
@@ -69,15 +69,15 @@ const TestimonialCard = ({
       <div className="flex flex-row items-center gap-2">
         <img className="rounded-full" width="40" height="40" alt={name} src={image} />
         <div className="flex flex-col items-start">
-          <figcaption className="text-sm font-medium dark:text-white">
+          <figcaption className="text-sm font-semibold leading-tight tracking-tight dark:text-white">
             {name}
           </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">
+          <p className="text-xs font-medium leading-tight tracking-tight dark:text-white/40">
             {role}, {company}
           </p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm dark:text-gray-200">{quote}</blockquote>
+      <blockquote className="mt-2 text-sm font-medium leading-tight tracking-tight dark:text-gray-200">{quote}</blockquote>
     </figure>
   );
 };
@@ -86,15 +86,17 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20 px-4 bg-gray-50 dark:bg-black">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12 dark:text-white">
+        <h2 className="text-4xl font-bold leading-tight tracking-tight mb-12 dark:text-white">
           What Our Clients Say
         </h2>
         
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((testimonial, index) => (
+        <div className="relative flex w-full items-center justify-center overflow-hidden rounded-lg">
+          <Marquee pauseOnHover className="[--duration:30s]">
+            {testimonials.map((testimonial, index) => (
               <TestimonialCard key={index} {...testimonial} />
             ))}
           </Marquee>
+        </div>
          
       </div>
     </section>

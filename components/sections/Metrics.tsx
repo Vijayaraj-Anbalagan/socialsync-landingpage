@@ -5,7 +5,7 @@ import NumberTicker from "../ui/number-ticker";
 const Metrics = () => {
   return (
     <div id="metrics" className="p-6 lg:p-20 sm:p-10 dark:bg-black">
-      <p className="text-center text-4xl font-bold mb-12 dark:text-white">Our Achievements</p>
+      <p className="text-center text-4xl font-bold leading-tight tracking-tight mb-12 dark:text-white">Our Achievements</p>
       <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
       <Card
         title="50"
@@ -51,11 +51,11 @@ const Card = ({ title, subtitle, Icon }: CardProps) => {
       <Icon className="mb-2 text-4xl text-violet-600 group-hover:text-white transition-colors relative z-10 duration-300" />
 
       {/* Title and Subtitle */}
-      <h3 className="font-bold text-2xl text-slate-950 group-hover:text-white transition-colors relative z-10 duration-300 dark:text-white">
+      <h3 className="font-bold text-2xl leading-tight tracking-tight text-slate-950 group-hover:text-white transition-colors relative z-10 duration-300 dark:text-white">
       <NumberTicker className="group-hover:text-white transition-colors " value={parseFloat(title)} />
       +
       </h3>
-      <p className="text-slate-400 group-hover:text-violet-200 relative z-10 duration-300">
+      <p className="text-slate-400 font-medium leading-tight tracking-tight group-hover:text-violet-200 relative z-10 duration-300">
         {subtitle}
       </p>
     </div>

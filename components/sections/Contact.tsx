@@ -34,16 +34,16 @@ const EnquiryCard: React.FC<{ tag: string; text: React.ReactNode; examples: stri
   return (
     <div className="w-full max-w-xl space-y-6">
       <div>
-        <p className="mb-1.5 text-sm font-light uppercase">{tag}</p>
+        <p className="mb-1.5 text-sm font-medium leading-tight tracking-tight uppercase">{tag}</p>
         <hr className="border-black" />
       </div>
-      <p className="max-w-lg text-xl leading-relaxed">{text}</p>
+      <p className="max-w-lg text-xl font-medium leading-tight tracking-tight">{text}</p>
       <div>
         <Typewriter examples={examples} />
         <hr className="border-neutral-300" />
       </div>
       <button
-        className="w-full rounded-full border border-black py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white dark:bg-white dark:text-black dark:hover:bg-gray-200"
+        className="w-full rounded-full border border-black py-2 text-sm font-semibold leading-tight tracking-tight transition-colors hover:bg-black hover:text-white dark:bg-white dark:text-black dark:hover:bg-gray-200"
         onClick={() => window.location.href = "mailto:socialsync.smm@gmail.com"}
       >
         Contact Us
@@ -72,9 +72,9 @@ const Typewriter: React.FC<{ examples: string[] }> = ({ examples }) => {
   }, [examples]);
 
   return (
-    <p className="mb-2.5 text-sm font-light uppercase">
+    <p className="mb-2.5 text-sm font-medium leading-tight tracking-tight uppercase">
       <span className="inline-block w-2 h-2 bg-black" />
-      <span className="ml-3">
+      <span className="ml-1">
         EXAMPLE:{" "}
         {examples[exampleIndex].split("").map((letter, i) => (
           <motion.span

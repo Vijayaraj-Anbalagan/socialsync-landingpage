@@ -48,13 +48,13 @@ const BounceCard = ({
       whileHover={{ scale: 1.05, rotate: "-1deg" }}
       className="group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] p-8 shadow-lg"
     >
-      <h3 className="text-xl md:text-2xl font-semibold text-center group-hover: transition-opacity duration-300">
+      <h3 className="text-xl md:text-2xl font-semibold leading-tight tracking-tight text-center transition-opacity duration-300">
         {title}
       </h3>
       <div
         className={`absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br ${gradient} p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]`}
       >
-        <span className="block text-center font-semibold text-white transition-opacity duration-300 group-hover:hidden sm:group-hover:block">
+        <span className="block text-center font-medium leading-tight tracking-tight text-white transition-opacity duration-300 group-hover:hidden sm:group-hover:block">
           {description}
         </span>
         <Icon className="w-16 h-16 mx-auto mt-4 text-white" />
@@ -68,7 +68,7 @@ export default function Services() {
     <section id="services" className="py-20 px-6 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8">
-          <h2 className="max-w-lg text-4xl font-bold md:text-5xl ml-1">
+          <h2 className="max-w-lg text-4xl font-bold leading-tight tracking-tight md:text-5xl ml-1">
             Discover Our{" "}
             <span className="text-slate-400">Expert Services</span>
           </h2>

@@ -106,12 +106,13 @@ const SparklesText: React.FC<SparklesTextProps> = ({
 
   return (
     <div
-      className={cn("font-bold", className)}
+      className={cn("font-semibold tracking-tighter", className)}
       {...props}
       style={
         {
           "--sparkles-first-color": `${colors.first}`,
           "--sparkles-second-color": `${colors.second}`,
+          letterSpacing: "-0.068em",
         } as CSSProperties
       }
     >
@@ -119,7 +120,7 @@ const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <strong>{text}</strong>
+        <strong className="font-semibold">{text}</strong>
       </span>
     </div>
   );

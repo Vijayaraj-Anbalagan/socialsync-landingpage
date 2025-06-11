@@ -36,7 +36,7 @@ export default function Navbar() {
       className="fixed w-full bg-white/30 dark:bg-black backdrop-blur-lg z-50 py-3 px-6 shadow-sm rounded-full border border-white/20 dark:border-gray-800/20"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <a href="#" className="text-2xl font-bold dark:text-white">
+        <a href="#" className="text-2xl font-semibold leading-none tracking-tight dark:text-white">
           SocialSync
         </a>
 
@@ -46,7 +46,7 @@ export default function Navbar() {
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href)}
-              className="text-black dark:text-white font-semibold hover:text-black dark:hover:text-white transition-colors"
+              className="text-black dark:text-white font-medium leading-tight tracking-tight hover:text-black dark:hover:text-white transition-colors"
             >
               {link.name}
             </button>
@@ -54,7 +54,7 @@ export default function Navbar() {
           <ThemeToggle />
           <Button 
            onClick={() => scrollToSection("#contact")}
-           className="bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-full">
+           className="bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 font-semibold leading-tight tracking-tight rounded-full">
             Contact us
           </Button>
         </div>
@@ -70,20 +70,20 @@ export default function Navbar() {
             </SheetTrigger>
           </div>
           <SheetContent className="bg-white dark:bg-gray-900">
-            <SheetTitle className="text-xl font-bold mb-4 dark:text-white">Navigation</SheetTitle>
+            <SheetTitle className="text-xl font-bold leading-tight tracking-tight mb-4 dark:text-white">Navigation</SheetTitle>
             <div className="flex flex-col space-y-4 mt-8">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-lg text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-left"
+                  className="text-lg font-medium leading-tight tracking-tight text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-left"
                 >
                   {link.name}
                 </button>
               ))}
               <Button 
                 onClick={() => scrollToSection("#contact")}
-                className="bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 w-full rounded-full">
+                className="bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 font-semibold leading-tight tracking-tight w-full rounded-full">
                 Contact us
               </Button>
             </div>
