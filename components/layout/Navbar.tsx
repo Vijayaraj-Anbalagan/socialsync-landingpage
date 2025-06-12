@@ -21,6 +21,7 @@ const navLinks = [
   { name: "Testimonials", href: "#testimonials", type: "scroll" },
   { name: "Metrics", href: "#metrics", type: "scroll" },
   { name: "Blog", href: "/blog", type: "link" },
+  { name: "Careers", href: "/careers", type: "link" },
 ];
 
 export default function Navbar() {
