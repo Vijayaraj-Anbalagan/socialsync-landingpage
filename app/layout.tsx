@@ -5,6 +5,8 @@ import { ThemeProvider } from '@/components/layout/ThemeProv';
 
 const inter = Inter({
   subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${inter.variable}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

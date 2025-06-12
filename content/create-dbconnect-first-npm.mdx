@@ -1,0 +1,186 @@
+---
+title: "My First NPM Package: `create-dbconnect` — No More Repeating Boilerplate!"
+publishedAt: "2025-06-09"
+summary: "Here’s a walkthrough of my first published NPM package, what problem it solves, how to use it, and how it works under the hood."
+---
+
+## 🚀 Introduction
+
+Every time I created a new **Next.js project with MongoDB**, I found myself repeating the same task —  
+writing a `dbConnect.ts` file with the same `mongoose.connect` logic, `.env` handling, and global caching.
+
+It wasn’t just repetitive — it was **boring** and **error-prone** when done in a rush.
+
+So I decided to turn that repetition into a reusable, zero-config CLI tool:
+
+`npx create-dbconnect`
+
+This was my **first ever published NPM package**, and I’m excited to share what it does, how to use it, and how it works under the hood.
+
+---
+
+## 💡 What Problem Does It Solve?
+
+When you're working with **Next.js + TypeScript + MongoDB**, you often need the same exact `dbConnect.ts` file to:
+
+- Connect to MongoDB using `mongoose`
+- Cache the connection to prevent duplicate instances (especially during hot reload)
+- Use `MONGODB_URI` from environment variables
+
+Instead of:
+
+- Manually creating `src/app/lib/`
+- Writing `dbConnect.ts` from scratch
+- Remembering to install `mongoose`
+
+You can now just run:
+
+`npx create-dbconnect`
+
+And you're done ✅
+
+This tool:
+
+- **Creates the correct folder structure** if it doesn't exist  
+- **Adds a fully typed, production-ready `dbConnect.ts` file**  
+- **Installs `mongoose`** automatically if it's missing  
+
+---
+
+## ⚙️ How to Use It
+
+Inside your Next.js project directory, run:
+
+`npx create-dbconnect`
+
+It will generate the following structure:
+
+```text
+src/
+└── app/
+    └── lib/
+        └── dbConnect.ts
+```
+
+And it installs:
+
+- [`mongoose`](https://www.npmjs.com/package/mongoose) — if not already present
+
+Now you can simply use the connection function like this:
+
+```ts
+import dbConnect from "@/app/lib/dbConnect";
+
+await dbConnect();
+````
+
+No extra setup needed. It just works.
+
+---
+
+## 🛠️ What’s Inside the File?
+
+The generated `dbConnect.ts` file contains:
+
+* ✅ Type-safe caching with `global.mongoose`
+* ✅ Auto fallback for `.env` variable `MONGODB_URI`
+* ✅ Robust `try/catch` logic
+* ✅ Recommended `bufferCommands` config
+
+Here’s the full file:
+
+```ts
+import mongoose from 'mongoose';
+
+declare global {
+  var mongoose: {
+    conn: typeof mongoose | null;
+    promise: Promise<typeof mongoose> | null;
+  } | undefined;
+}
+
+const MONGODB_URI = process.env.MONGODB_URI || 'your-mongo-uri-here';
+
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+const connectToDatabase = async () => {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, {
+      bufferCommands: true,
+    }).then((mongoose) => mongoose);
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+};
+
+export default connectToDatabase;
+```
+
+---
+
+## 🧠 How It Works Internally
+
+Behind the scenes, the package does the following:
+
+1. Locates or creates the `src/app/lib/` folder
+2. Copies a pre-written `dbConnect.ts` template file into it
+3. Checks if `mongoose` is already installed
+4. If not, it runs:
+
+`npm install mongoose`
+
+All this is handled through a Node.js CLI using:
+
+* `fs` — for file system operations
+* `path` — for resolving directories
+* `child_process` — to execute install commands
+
+The goal was to keep it **simple**, **clean**, and **automatic**.
+
+---
+
+## 📦 Why This Package Matters to Me
+
+This wasn’t just about boilerplate — it was also about:
+
+* ✅ Learning how to build real CLI tools
+* ✅ Publishing my **first NPM package**
+* ✅ Saving time for myself and others in the dev community
+
+It’s a small step, but a meaningful one in my developer journey.
+
+---
+
+## ✍️ A Blog on “How I Built This” is Coming Soon
+
+This post was about **what the tool does** and **why it’s useful**.
+
+But if you're curious about:
+
+* How to build and structure an NPM package
+* How to write Node.js-based CLI tools
+* How to publish and version your package
+* How to test it locally and link it globally
+
+👉 I’ll be publishing a **follow-up blog soon** explaining how I built `create-dbconnect` from scratch.
+
+---
+
+## 🙌 Wrap-Up
+
+Thanks for reading! If you try out `create-dbconnect` or find it useful, feel free to share feedback or contribute.
+
+You can check out the package here:
+👉 [https://www.npmjs.com/package/create-dbconnect](https://www.npmjs.com/package/create-dbconnect)
+
+More updates coming soon — including a detailed guide on publishing your first CLI package to NPM.
+
+Stay tuned 🚀
+

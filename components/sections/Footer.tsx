@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Instagram } from "lucide-react";
 import SparklesText from "../ui/sparkles-text";
+import Link from "next/link";
 
 const socialLinks = [
   {
@@ -23,9 +24,10 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { name: "Home", id: "home" },
-  { name: "Services", id: "services" },
-  { name: "Portfolio", id: "portfolio" },
+  { name: "Home", id: "home", type: "scroll" },
+  { name: "Services", id: "services", type: "scroll" },
+  { name: "Portfolio", id: "portfolio", type: "scroll" },
+  { name: "Blog", href: "/blog", type: "link" },
 ];
 
 export default function Footer() {
@@ -46,14 +48,25 @@ export default function Footer() {
           {/* Center: Quick Links */}
           <div className="flex justify-center space-x-6">
             {quickLinks.map((link) => (
-              <Button
-                key={link.id}
-                variant="link"
-                onClick={() => scrollToSection(link.id)}
-                className="text-gray-600 hover:text-black font-medium leading-tight tracking-tight transition-colors dark:text-gray-200"
-              >
-                {link.name}
-              </Button>
+              link.type === "link" ? (
+                <Link key={link.name} href={link.href!}>
+                  <Button
+                    variant="link"
+                    className="text-gray-600 hover:text-black font-medium leading-tight tracking-tight transition-colors dark:text-gray-200"
+                  >
+                    {link.name}
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  key={link.id}
+                  variant="link"
+                  onClick={() => scrollToSection(link.id!)}
+                  className="text-gray-600 hover:text-black font-medium leading-tight tracking-tight transition-colors dark:text-gray-200"
+                >
+                  {link.name}
+                </Button>
+              )
             ))}
           </div>
 
