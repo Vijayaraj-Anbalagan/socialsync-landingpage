@@ -1,13 +1,34 @@
 'use client';
-import type { Metadata } from 'next';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import FormfacadeEmbed from "@formfacade/embed-react";
-
-
+import { useEffect, useState } from 'react';
 
 export default function CareersPage() {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  // Set page metadata using useEffect since we're using 'use client'
+  useEffect(() => {
+    document.title = "Careers - SocialSync | Join Our Digital Innovation Team";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Join SocialSync and be part of a dynamic team that transforms businesses through cutting-edge digital marketing, branding, and web solutions. Explore career opportunities and grow with us.');
+    }
+  }, []);
+
+  const handleFormSubmit = () => {
+    console.log('Form submitted');
+    setShowSuccessMessage(true);
+    // Scroll to success message
+    setTimeout(() => {
+      const successElement = document.getElementById('success-message');
+      if (successElement) {
+        successElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+  };
   return (
     <>
       <Navbar />
@@ -70,9 +91,7 @@ export default function CareersPage() {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Application Form Section */}
+          </div>          {/* Application Form Section */}
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-semibold leading-tight tracking-tight mb-4">
@@ -81,16 +100,55 @@ export default function CareersPage() {
               <p className="text-lg font-medium leading-tight tracking-tight text-gray-600 dark:text-gray-400">
                 Fill out the application form below and let&apos;s start your journey with SocialSync.
               </p>
-            </div>
-
-            {/* Form Container */}
-            <FormfacadeEmbed
-
-                    formFacadeURL="https://formfacade.com/include/101962553111290905553/form/1FAIpQLSdVq9sysl3xkVCPd1etknCw7ogEJY_AVp_dTwkjvHId_ZbMhQ/classic.js/?div=ff-compose"
-                    onSubmitForm={() => console.log('Form submitted')}
-
-                    />
-            </div>
+            </div>            {/* Success Message */}
+            {showSuccessMessage && (
+              <div 
+                id="success-message"
+                className="mb-8 p-6 bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-700/50 rounded-xl backdrop-blur-sm"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-8 h-8 bg-green-100 dark:bg-green-800/50 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-green-800 dark:text-green-300 mb-2">
+                      Application Submitted Successfully!
+                    </h3>
+                    <p className="text-green-700 dark:text-green-400 font-medium mb-3">
+                      Thank you for your interest in joining SocialSync. Our team will reach out to you via email or phone within 2-3 business days.
+                    </p>
+                    <p className="text-sm text-green-600 dark:text-green-500 mb-4">
+                      For any urgent queries, feel free to contact us at{' '}
+                      <a 
+                        href="mailto:thesocialsyncin@gmail.com" 
+                        className="underline hover:text-green-800 dark:hover:text-green-300 font-medium transition-colors"
+                      >
+                        thesocialsyncin@gmail.com
+                      </a>
+                    </p>
+                    <button
+                      onClick={() => setShowSuccessMessage(false)}
+                      className="inline-flex items-center px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 transition-colors"
+                    >
+                      Submit Another Application
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}{/* Form Container */}
+            {!showSuccessMessage && (
+              <div className="bg-white/5 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 dark:bg-white rounded-xl p-8">
+                <FormfacadeEmbed
+                  formFacadeURL="https://formfacade.com/include/101962553111290905553/form/1FAIpQLSdVq9sysl3xkVCPd1etknCw7ogEJY_AVp_dTwkjvHId_ZbMhQ/classic.js/?div=ff-compose"
+                  onSubmitForm={handleFormSubmit}
+                />
+              </div>
+            )}
+          </div>
 
           {/* Contact Section */}
           <div className="max-w-4xl mx-auto mt-16 text-center">
@@ -99,11 +157,11 @@ export default function CareersPage() {
                 Have Questions?
               </h3>
               <p className="font-medium leading-tight tracking-tight text-gray-600 dark:text-gray-400 mb-6">
-                Our HR team is here to help you with any questions about careers at SocialSync.
+                Our team is here to help you with any questions about careers at SocialSync.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a 
-                  href="mailto:careers@thesocialsync.in"
+                  href="mailto:thesocialsync.in@gmail.com"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +171,7 @@ export default function CareersPage() {
                 </a>
                 <span className="text-gray-400">or</span>
                 <Link 
-                  href="/#contact"
+                  href="https://thesocialsync.in/#contact"
                   className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
                   Contact Form

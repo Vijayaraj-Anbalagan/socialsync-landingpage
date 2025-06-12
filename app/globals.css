@@ -245,3 +245,103 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .animate-float-2 {
   animation: float-2 10s ease-in-out infinite alternate;
 }
+
+/* FormFacade Customization */
+.ff-banner-image,
+.ff-title,
+.ff-description,
+.ff-powered-img,
+.ff-watermark,
+.ff-success {
+  display: none !important;
+}
+
+/* Hide FormFacade's own success message and watermark after submission */
+.ff-success-default,
+.create-your-own-form {
+  display: none !important;
+}
+
+/* Ensure no extra spacing from hidden FormFacade elements */
+#ff-compose .ff-form,
+#ff-compose .ff-section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Success Message Animation */
+#success-message {
+  animation: slideInFadeIn 0.6s ease-out forwards;
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+@keyframes slideInFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Success message hover effect */
+#success-message:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Success message link styling */
+#success-message a {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+#success-message a:hover {
+  text-decoration: none;
+}
+
+#success-message a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+#success-message a:hover::after {
+  width: 100%;
+}
+
+/* Success message button styling */
+#success-message button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: all 0.2s ease-in-out;
+}
+
+#success-message button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#success-message button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode adjustments for button */
+@media (prefers-color-scheme: dark) {
+  #success-message button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  #success-message button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+}
