@@ -82,7 +82,7 @@ export default function BuildPortfolio() {
                   <div className="space-y-3 text-gray-600 dark:text-gray-400">
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-3 text-blue-600" />
-                      <span>July 16 – 24, 2025</span>
+                      <span>June 16 – 24, 2025</span>
                     </div>
                     <div className="flex items-center">
                       <Clock className="w-4 h-4 mr-3 text-blue-600" />
@@ -152,7 +152,7 @@ export default function BuildPortfolio() {
                   <div className="flex flex-wrap gap-2">
                     {[
                       "HTML", "CSS", "Bootstrap", "Tailwind", "UX/UI", "SEO", 
-                      "PRD", "SRD", "Color Theory", "Asset Management", 
+                      "PRD", "SRD", "Color Theory", "Asset Management", "Git",
                       "Client Relations", "Hosting", "Deployment", "GitHub Pages", "VS Code"
                     ].map((topic) => (
                       <span 
@@ -172,7 +172,7 @@ export default function BuildPortfolio() {
               Workshop <span className="text-blue-600">Roadmap</span>
             </h2>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              10 Power-Packed Guided Sessions | Real-World Projects | Hosted Portfolio | Internship-Ready
+              10 Guided Sessions | Real-World Projects | Hosted Portfolio | Internship-Ready
             </p>
             
             <div className="grid gap-4">              {[
