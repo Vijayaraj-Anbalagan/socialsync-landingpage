@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase } from "lucide-react";
 import SparklesText from "../ui/sparkles-text";
+import Link from "next/link";
 
 
 export default function Hero() {
@@ -24,17 +25,30 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="space-y-8"
-      >
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-4"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold leading-none tracking-tight">
-            <SparklesText text="SocialSync" />
-          </h1>
+      >          {/* Workshop Banner */}
+          <Link href="/build-portfolio" className="inline-block">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 rounded-full mb-6 hover:scale-105 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] cursor-pointer group"
+            >
+              <Briefcase className="w-4 h-4 mr-2" />
+              Build Your Portfolio
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </motion.div>
+          </Link>
+
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-4"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold leading-none tracking-tight">
+              <SparklesText text="SocialSync" />
+            </h1>
           
           <p className="text-xl md:text-2xl font-medium leading-tight tracking-tight mt-4">
             <span style={{ color: '#5271ff' }}>
