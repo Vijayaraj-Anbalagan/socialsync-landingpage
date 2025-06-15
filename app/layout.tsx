@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/layout/ThemeProv';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,8 +32,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
+  return (    <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-site-verification" content="your-verification-code" />
+      </head>
       <body className={`${inter.className} ${inter.variable}`}>
         <ThemeProvider
           attribute="class"
@@ -42,6 +45,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-B9ZQEZ14MQ" />
       </body>
     </html>
   );
