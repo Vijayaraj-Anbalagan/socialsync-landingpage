@@ -197,14 +197,12 @@ const SPRING_OPTIONS = {
 export const SwipeCarousel = () => {
   const [imgIndex, setImgIndex] = useState(0);
   const dragX = useMotionValue(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const intervalRef = setInterval(() => {
       const x = dragX.get();
 
-      if (x === 0 && !isDragging) {
+      if (x === 0 ) {
         setImgIndex((prev) => {
           if (prev === cards.length - 1) {
             return 0;
@@ -215,7 +213,7 @@ export const SwipeCarousel = () => {
     }, AUTO_DELAY);
 
     return () => clearInterval(intervalRef);
-  }, [dragX, isDragging]);
+  }, [dragX]);
 
   const onDragEnd = () => {
     const x = dragX.get();
@@ -225,11 +223,10 @@ export const SwipeCarousel = () => {
     } else if (x >= DRAG_BUFFER && imgIndex > 0) {
       setImgIndex((prev) => prev - 1);
     }
-    setIsDragging(false);
   };
 
   return (
-    <div className="flex flex-col gap-6 py-4 sm:block md:hidden" ref={containerRef}>
+    <div className="flex flex-col relative overflow-hidden gap-6 py-4 sm:block md:hidden">
       <motion.div
         drag="x"
         dragConstraints={{
@@ -242,11 +239,6 @@ export const SwipeCarousel = () => {
         animate={{
           translateX: `-${imgIndex * 100}%`,
         }}
-        transition={{
-          ...SPRING_OPTIONS,
-          bounce: 0.15,
-        }}
-        onDragStart={() => setIsDragging(true)}
         onDragEnd={onDragEnd}
         className="flex snap-x snap-mandatory touch-pan-x"
       >
@@ -308,7 +300,7 @@ const Images: React.FC<ImagesProps> = ({ imgIndex }) => {
             )}
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20">
-              <div className="absolute inset-0 flex flex-col justify-end p-4">
+              <div className="absolute inset-0 flex flex-col justify-end p-2">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <div className="h-0.5 w-6 bg-blue-500 rounded-full" />

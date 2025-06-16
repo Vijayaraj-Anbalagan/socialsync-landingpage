@@ -13,7 +13,8 @@ import {
   CheckCircle,
   Globe,
   Award,
-  Laptop
+  Laptop,
+  UserPlus
 } from "lucide-react";
 
 export default function BuildPortfolio() {
@@ -25,10 +26,13 @@ export default function BuildPortfolio() {
       metaDescription.setAttribute('content', 'Join SocialSync Build Portfolio Workshop - Learn web development, deploy your portfolio, and build your digital presence in 2 weeks.');
     }
   }, []);
-
   const handleWhatsAppJoin = () => {
     // Replace with your actual WhatsApp group link
     window.open("https://chat.whatsapp.com/L88laJDdMbrHhDTTBnGuHu", "_blank");
+  };
+
+  const handleRegisterRedirect = () => {
+    window.location.href = "/build-portfolio/register";
   };
 
   return (
@@ -45,7 +49,7 @@ export default function BuildPortfolio() {
           <div className="max-w-4xl mx-auto text-center mb-16 mt-8">
             <div className="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 rounded-full mb-6">
               <Calendar className="w-3 h-3 mr-2" />
-              Workshop Starting Soon
+              From Today
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-6">
@@ -304,14 +308,42 @@ export default function BuildPortfolio() {
                 <p className="text-sm text-gray-600 dark:text-gray-400">Complete 10-session program</p>
               </div>
             </div>
-          </div>          {/* CTA Section */}
+          </div>          {/* Registration Banner */}
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="p-6 rounded-2xl border-2 border-blue-500 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:border-blue-400">
+              <div className="text-center">
+                <div className="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-600 bg-blue-100 dark:bg-blue-900/40 dark:text-blue-300 rounded-full mb-4">
+                  <UserPlus className="w-3 h-3 mr-2" />
+                  Registration Open
+                </div>
+                <h2 className="text-xl md:text-2xl font-bold leading-tight tracking-tight mb-3 text-gray-900 dark:text-white">
+                  Secure Your Spot Now!
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">
+                  Limited seats available. Register now to guarantee your place in the Build Portfolio Workshop and start your journey to building an amazing portfolio.
+                </p>
+                
+                <Button
+                  onClick={handleRegisterRedirect}
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 inline-flex items-center hover:scale-105 transform shadow-lg hover:shadow-xl"
+                >
+                  <UserPlus className="w-5 h-5 mr-2" />
+                  Register Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
           <div className="max-w-4xl mx-auto text-center">
-            <div className="p-8 rounded-2xl border border-blue-200/50 dark:border-blue-800/50 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/20 dark:to-indigo-900/20 backdrop-blur-sm hover:shadow-sm transition-all duration-300">
+            <div className="p-8 rounded-2xl border border-green-200/50 dark:border-green-800/50 bg-gradient-to-r from-green-50/50 to-emerald-50/50 dark:from-green-900/20 dark:to-emerald-900/20 backdrop-blur-sm hover:shadow-sm transition-all duration-300">
               <h2 className="text-2xl font-semibold leading-tight tracking-tight mb-4">
-                Ready to Build Your Portfolio?
+                Stay Connected & Get Updates
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">
-                Join our WhatsApp group to get notified about the first free session and receive workshop updates.
+                Join our WhatsApp group to get notified about session schedules, important announcements, and connect with fellow participants.
               </p>
               
               <Button

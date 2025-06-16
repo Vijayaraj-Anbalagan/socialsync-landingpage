@@ -34,9 +34,8 @@ export default function Footer() {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
-
   return (
-    <footer className="py-12 px-4 bg-white border-t border-gray-100 dark:bg-black dark:border-gray-900">
+    <footer className="py-12 px-4 bg-white border-t border-gray-100 dark:bg-black dark:border-gray-900 overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8">
           {/* Left: Logo/Brand */}
@@ -46,7 +45,7 @@ export default function Footer() {
           </div>
 
           {/* Center: Quick Links */}
-          <div className="flex justify-center space-x-6">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {quickLinks.map((link) => (
               link.type === "link" ? (
                 <Link key={link.name} href={link.href!}>
@@ -68,17 +67,15 @@ export default function Footer() {
                 </Button>
               )
             ))}
-          </div>
-
-          {/* Right: Social Media Icons */}
-          <div className="flex justify-center md:justify-end space-x-4">
+          </div>          {/* Right: Social Media Icons */}
+          <div className="flex justify-center md:justify-end gap-2 sm:gap-4">
             {socialLinks.map((social) => (
                 <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-600 hover:text-black  transform hover:-translate-y-1 transition-all ease-in-out duration-200 dark:text-gray-200"
+                className="p-2 text-gray-600 hover:text-black transform hover:-translate-y-1 transition-all ease-in-out duration-200 dark:text-gray-200 flex-shrink-0"
                 aria-label={social.label}
                 >
                 <social.icon className="w-5 h-5" />
