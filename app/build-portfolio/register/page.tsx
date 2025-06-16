@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
 import { motion } from "framer-motion";
-import { Upload, FileText, User, Mail, Phone, Building, Code, Target, CheckCircle } from "lucide-react";
+import { Upload, FileText, User, Mail, Phone, Building, Code, Target, CheckCircle, Copy, CreditCard, QrCode } from "lucide-react";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -24,10 +24,10 @@ export default function RegisterPage() {
     availability: "",
     consent: false
   });
-
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [copiedText, setCopiedText] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -98,26 +98,34 @@ export default function RegisterPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(submissionData),
-      });
-
-      if (response.ok) {
+      });      if (response.ok) {
         setSubmitted(true);
+        // Scroll to top with smooth animation
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error("Failed to submit form");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Error submitting form. Please try again.");
-    } finally {
+      alert("Error submitting form. Please try again.");    } finally {
       setUploading(false);
     }
   };
 
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedText(type);
+      setTimeout(() => setCopiedText(""), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
   if (submitted) {
     return (
       <>
         <Navbar />
-        <main className="min-h-screen bg-white text-black dark:bg-black dark:text-white">
+        <main className="min-h-screen bg-white text-black dark:bg-black dark:text-white flex items-center justify-center">
           {/* Background Effects */}
           <div className="fixed inset-0 pointer-events-none z-0">
             <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[40vw] h-[40vw] bg-pink-200 dark:bg-pink-700/30 opacity-40 rounded-full blur-3xl animate-float-1"></div>
@@ -127,25 +135,40 @@ export default function RegisterPage() {
           <div className="relative z-10 px-4 py-20">
             <div className="max-w-2xl mx-auto text-center">
               <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 className="bg-green-100 dark:bg-green-900/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6"
               >
                 <CheckCircle className="w-12 h-12 text-green-600" />
               </motion.div>
               
-              <h1 className="text-3xl font-bold mb-4">Registration Successful!</h1>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-3xl font-bold mb-4"
+              >
+                Registration Successful!
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-lg text-gray-600 dark:text-gray-400 mb-8"
+              >
                 Thank you for registering for the Build Portfolio Workshop. We&apos;ll contact you soon with further details.
-              </p>
+              </motion.p>
               
-              <a 
+              <motion.a 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
                 href="/build-portfolio"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hover:scale-105 transform"
               >
                 Back to Workshop Details
-              </a>
+              </motion.a>
             </div>
           </div>
         </main>
@@ -177,7 +200,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {/* Personal Information */}
               <div className="bg-white/5 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 rounded-xl p-6">
                 <h2 className="text-xl font-semibold mb-6 flex items-center">
@@ -449,41 +472,116 @@ export default function RegisterPage() {
                     />
                   </div>
                 </div>
-              </div>
-
-              {/* Payment Proof Upload */}
+              </div>              {/* Payment Section */}
               <div className="bg-white/5 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 rounded-xl p-6">
                 <h2 className="text-xl font-semibold mb-6 flex items-center">
-                  <FileText className="w-5 h-5 mr-2 text-blue-600" />
-                  Payment Proof
+                  <CreditCard className="w-5 h-5 mr-2 text-blue-600" />
+                  Payment
                 </h2>
                 
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Please upload a screenshot of your payment proof for the workshop fee <span className="text-red-500">*</span>
-                  </label>                  <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center">
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      onChange={handleFileUpload}
-                      accept="image/*,.pdf"
-                      required
-                      className="hidden"
-                    />
-                    <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      {uploadedFile ? uploadedFile.name : "Click to upload or drag and drop"}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Upload 1 supported file. Max 10 MB.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="mt-2 px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      Choose File
-                    </button>
+                <div className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* QR Code */}
+                    <div className="text-center">
+                      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 inline-block">
+                        <QrCode className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                        <p className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Scan QR Code to Pay</p>
+                        <img 
+                          src="/imgs/qr.jpg" 
+                          alt="Payment QR Code" 
+                          className="w-48 h-48 mx-auto rounded-lg border border-gray-200 dark:border-gray-600"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Payment Details */}
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-2">UPI ID</label>
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="text"
+                            value="shrishanmugam2@okaxis"
+                            readOnly
+                            className="flex-1 px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-sm"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => copyToClipboard("shrishanmugam2@okaxis", "upi")}
+                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                            title="Copy UPI ID"
+                          >
+                            <Copy className="w-4 h-4" />
+                          </button>
+                        </div>
+                        {copiedText === "upi" && (
+                          <p className="text-xs text-green-600 mt-1">UPI ID copied!</p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Mobile Number</label>
+                        <div className="flex items-center space-x-2 mb-2">
+                          <input
+                            type="text"
+                            value="7550227793"
+                            readOnly
+                            className="flex-1 px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-sm"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => copyToClipboard("7550227793", "mobile")}
+                            className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                            title="Copy Mobile Number"
+                          >
+                            <Copy className="w-4 h-4" />
+                          </button>
+                        </div>
+                        {copiedText === "mobile" && (
+                          <p className="text-xs text-green-600 mt-1">Mobile number copied!</p>
+                        )}
+                      </div>
+
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
+                        <p className="text-sm text-blue-800 dark:text-blue-200">
+                          <li>Pay <strong>₹300</strong> for the workshop fee</li>
+                          <li>Add your <strong>Name</strong> in the remarks while paying</li>
+                          <li>Take a screenshot of the payment</li>
+                          <li>Upload the screenshot below</li>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* File Upload Section */}
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      Upload Payment Screenshot <span className="text-red-500">*</span>
+                    </label>
+                    <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center">
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileUpload}
+                        accept="image/*,.pdf"
+                        required
+                        className="hidden"
+                      />
+                      <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        {uploadedFile ? uploadedFile.name : "Click to upload payment screenshot"}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Upload 1 supported file. Max 10 MB.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="mt-2 px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
+                      >
+                        Choose File
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
