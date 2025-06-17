@@ -187,7 +187,8 @@ export default function BuildPortfolio() {
                   emoji: "🚀",
                   desc: "Understanding web fundamentals and setting up your development environment.",
                   showButtons: true,
-                  resourceUnlocked: true
+                  resourceUnlocked: true,
+                  reviewUnlocked: true
                 },
                 {
                   number: 2,
@@ -195,7 +196,8 @@ export default function BuildPortfolio() {
                   emoji: "🧱",
                   desc: "HTML structure, semantic markup, and version control with GitHub.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 3,
@@ -203,7 +205,8 @@ export default function BuildPortfolio() {
                   emoji: "🎨",
                   desc: "CSS fundamentals, layouts, and responsive design principles.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 4,
@@ -211,7 +214,8 @@ export default function BuildPortfolio() {
                   emoji: "🌀",
                   desc: "Advanced CSS techniques and Bootstrap framework integration.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 5,
@@ -219,7 +223,8 @@ export default function BuildPortfolio() {
                   emoji: "⚙️",
                   desc: "Tailwind CSS, modern tools, and efficient development workflows.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 6,
@@ -227,7 +232,8 @@ export default function BuildPortfolio() {
                   emoji: "🧠",
                   desc: "Design thinking, user experience, and project planning strategies.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 7,
@@ -235,7 +241,8 @@ export default function BuildPortfolio() {
                   emoji: "🧩",
                   desc: "Converting designs to code and building responsive layouts.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 8,
@@ -243,7 +250,8 @@ export default function BuildPortfolio() {
                   emoji: "🖌️",
                   desc: "Personal branding, typography, color theory, and unique design choices.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 9,
@@ -251,7 +259,8 @@ export default function BuildPortfolio() {
                   emoji: "🚀",
                   desc: "Deployment, hosting, analytics, and performance optimization.",
                   showButtons: false,
-                  resourceUnlocked: false
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
                 },
                 {
                   number: 10,
@@ -259,12 +268,19 @@ export default function BuildPortfolio() {
                   emoji: "🎯",
                   desc: "SEO, professional networking, and career advancement strategies.",
                   showButtons: false,
-                  resourceUnlocked: false
-                }
-              ].map((session, index) => (
+                  resourceUnlocked: false,
+                  reviewUnlocked: false
+                }              ].map((session, index) => (
                 <div 
                   key={session.number}
-                  className="group p-6 rounded-xl border border-gray-200 dark:border-gray-800/50 bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:shadow-sm hover:border-blue-300 dark:hover:border-blue-700/50 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 transition-all duration-300"
+                  onClick={() => {
+                    if (session.resourceUnlocked) {
+                      window.location.href = `/build-portfolio/session${session.number}/details`;
+                    }
+                  }}
+                  className={`group p-6 rounded-xl border border-gray-200 dark:border-gray-800/50 bg-white/50 dark:bg-white/5 backdrop-blur-sm hover:shadow-sm hover:border-blue-300 dark:hover:border-blue-700/50 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 transition-all duration-300 ${
+                    session.resourceUnlocked ? 'cursor-pointer' : 'cursor-default'
+                  }`}
                 >
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
@@ -283,12 +299,14 @@ export default function BuildPortfolio() {
                       </div>                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                         {session.desc}
                       </p>
-                      
-                      {/* Action Buttons */}
+                        {/* Action Buttons */}
                       {session.showButtons && (
-                        <div className="flex gap-3 mt-4">                          {/* Resource Button */}
+                        <div className="flex gap-3 mt-4" onClick={(e) => e.stopPropagation()}>
+                          
+                          {/* Resource Button */}
                           <button
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.stopPropagation();
                               if (session.resourceUnlocked) {
                                 window.location.href = `/build-portfolio/session${session.number}/details`;
                               }
@@ -306,13 +324,21 @@ export default function BuildPortfolio() {
                           
                           {/* Feedback Button */}
                           <button
-                            onClick={() => {
-                              window.location.href = `/build-portfolio/session${session.number}/review`;
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (session.reviewUnlocked) {
+                                window.location.href = `/build-portfolio/session${session.number}/review`;
+                              }
                             }}
-                            className="flex items-center px-3 py-1.5 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50 rounded-lg transition-all duration-200 cursor-pointer"
+                            disabled={!session.reviewUnlocked}
+                            className={`flex items-center px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 ${
+                              session.reviewUnlocked
+                                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50 cursor-pointer'
+                                : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 cursor-not-allowed opacity-75'
+                            }`}
                           >
                             <MessageCircle className="w-3 h-3 mr-1" />
-                            Feedback
+                            {session.reviewUnlocked ? 'Feedback' : 'Locked'}
                           </button>
                         </div>
                       )}
