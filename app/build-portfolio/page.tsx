@@ -189,15 +189,14 @@ export default function BuildPortfolio() {
                   showButtons: true,
                   resourceUnlocked: true,
                   reviewUnlocked: true
-                },
-                {
+                },                {
                   number: 2,
-                  title: "Mark the Web",
+                  title: "Building the Base – From Editor to GitHub",
                   emoji: "🧱",
                   desc: "HTML structure, semantic markup, and version control with GitHub.",
-                  showButtons: false,
-                  resourceUnlocked: false,
-                  reviewUnlocked: false
+                  showButtons: true,
+                  resourceUnlocked: true,
+                  reviewUnlocked: true
                 },
                 {
                   number: 3,
