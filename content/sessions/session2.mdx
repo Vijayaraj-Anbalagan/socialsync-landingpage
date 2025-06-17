@@ -1,0 +1,230 @@
+---
+title: "Mark the Web"
+sessionNumber: 2
+emoji: "🧱"
+description: "HTML structure, semantic markup, and version control with GitHub."
+date: "2025-06-17"
+duration: "60 minutes"
+difficulty: "Beginner"
+tags: ["HTML", "Semantic Markup", "GitHub", "Version Control", "Structure"]
+isLive: true
+resourcesUnlocked: false
+---
+
+## 🧱 Session 2: Mark the Web
+
+Building on our foundation from Session 1, today we'll dive deep into HTML structure and learn how to create semantic, accessible websites. We'll also set up version control with GitHub to manage our code like a professional developer.
+
+### 🎯 Learning Objectives
+
+By the end of this session, you will:
+
+- Master HTML5 semantic elements
+- Understand the importance of accessible markup
+- Create well-structured HTML documents
+- Set up and use GitHub for version control
+- Publish your first project to GitHub Pages
+
+---
+
+## 📋 Session Agenda
+
+### 1. HTML5 Semantic Elements (20 minutes)
+- Beyond divs: header, nav, main, section, article, aside, footer
+- Why semantic markup matters for SEO and accessibility
+- Screen readers and assistive technologies
+- Building a proper document structure
+
+### 2. GitHub and Version Control (20 minutes)
+- What is version control and why it matters
+- Creating your GitHub account
+- Understanding repositories, commits, and branches
+- GitHub Desktop vs command line
+
+### 3. Hands-on: Portfolio Structure (15 minutes)
+- Planning our portfolio layout
+- Creating semantic HTML structure
+- Setting up our GitHub repository
+- Making our first commit
+
+### 4. GitHub Pages Deployment (5 minutes)
+- Publishing your website for free
+- Custom domains (optional)
+- Understanding the deployment process
+
+---
+
+## 🏗️ HTML5 Semantic Structure
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="John Doe - Web Developer Portfolio">
+    <title>John Doe | Web Developer</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>John Doe</h1>
+            <p>Web Developer & Creative Problem Solver</p>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <article>
+                <p>I'm a passionate web developer...</p>
+            </article>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <article class="project">
+                <h3>Project 1</h3>
+                <p>Description of project...</p>
+            </article>
+        </section>
+    </main>
+
+    <aside>
+        <h3>Latest Blog Posts</h3>
+        <!-- Blog posts sidebar -->
+    </aside>
+
+    <footer>
+        <p>&copy; 2025 John Doe. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+```
+
+---
+
+## 🔄 Git and GitHub Workflow
+
+### Basic Git Commands
+```bash
+# Initialize a repository
+git init
+
+# Add files to staging
+git add .
+
+# Commit changes
+git commit -m "Initial commit"
+
+# Connect to GitHub
+git remote add origin https://github.com/username/repository.git
+
+# Push to GitHub
+git push -u origin main
+```
+
+### GitHub Workflow
+1. **Create Repository** on GitHub
+2. **Clone** to your local machine
+3. **Make Changes** to your files
+4. **Add & Commit** changes
+5. **Push** to GitHub
+6. **Deploy** with GitHub Pages
+
+---
+
+## 🌐 Accessibility Best Practices
+
+### Essential HTML Attributes
+```html
+<!-- Alt text for images -->
+<img src="profile.jpg" alt="John Doe smiling in a professional headshot">
+
+<!-- Semantic headings hierarchy -->
+<h1>Main Page Title</h1>
+<h2>Section Heading</h2>
+<h3>Subsection Heading</h3>
+
+<!-- Form labels -->
+<label for="email">Email Address:</label>
+<input type="email" id="email" name="email" required>
+
+<!-- Link descriptions -->
+<a href="resume.pdf" target="_blank" aria-label="Download resume as PDF">
+    Download Resume
+</a>
+
+<!-- Language specification -->
+<html lang="en">
+```
+
+---
+
+## 🏠 Homework Assignment
+
+Before Session 3:
+
+1. **Complete your portfolio structure**:
+   - Create a proper semantic HTML layout
+   - Add placeholder content for all sections
+   - Include proper meta tags
+
+2. **GitHub practice**:
+   - Make at least 3 commits to your repository
+   - Try creating a new branch
+   - Deploy your site using GitHub Pages
+
+3. **Accessibility audit**:
+   - Run your site through [WAVE Web Accessibility Evaluator](https://wave.webaim.org/)
+   - Fix any issues you find
+
+4. **Explore**: Look at 3 professional developer portfolios and note their structure
+
+---
+
+## 📚 Resources
+
+### HTML & Semantic Markup
+- [MDN HTML Elements Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [HTML5 Semantic Elements](https://www.w3schools.com/html/html5_semantic_elements.asp)
+- [WebAIM Accessibility Guidelines](https://webaim.org/intro/)
+
+### Git & GitHub
+- [GitHub Git Handbook](https://guides.github.com/introduction/git-handbook/)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [Interactive Git Tutorial](https://learngitbranching.js.org/)
+
+### Tools
+- [GitHub Desktop](https://desktop.github.com/) - GUI for Git
+- [VS Code Git Integration](https://code.visualstudio.com/docs/editor/versioncontrol)
+- [WAVE Accessibility Checker](https://wave.webaim.org/)
+
+---
+
+## 🎊 Great Progress!
+
+You've now learned the foundation of professional web development:
+
+**What you accomplished today:**
+- ✅ Mastered HTML5 semantic elements
+- ✅ Set up GitHub for version control
+- ✅ Created your first repository
+- ✅ Deployed a live website
+- ✅ Learned accessibility best practices
+
+**Next up in Session 3**: "Styling Sorcery – Part 1" - We'll make your portfolio beautiful with CSS fundamentals, layouts, and responsive design.
+
+The structure is set, now let's make it shine! ✨
+
+---
+
+*Remember: Good HTML is the foundation of everything else. Take time to get this right!*

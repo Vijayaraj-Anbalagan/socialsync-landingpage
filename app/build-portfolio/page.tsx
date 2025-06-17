@@ -14,7 +14,8 @@ import {
   Globe,
   Award,
   Laptop,
-  UserPlus
+  UserPlus,
+  BookOpen
 } from "lucide-react";
 
 export default function BuildPortfolio() {
@@ -184,61 +185,81 @@ export default function BuildPortfolio() {
                   number: 1,
                   title: "Into the Webverse",
                   emoji: "🚀",
-                  desc: "Understanding web fundamentals and setting up your development environment."
+                  desc: "Understanding web fundamentals and setting up your development environment.",
+                  showButtons: true,
+                  resourceUnlocked: true
                 },
                 {
                   number: 2,
                   title: "Mark the Web",
                   emoji: "🧱",
-                  desc: "HTML structure, semantic markup, and version control with GitHub."
+                  desc: "HTML structure, semantic markup, and version control with GitHub.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 3,
                   title: "Styling Sorcery – Part 1",
                   emoji: "🎨",
-                  desc: "CSS fundamentals, layouts, and responsive design principles."
+                  desc: "CSS fundamentals, layouts, and responsive design principles.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 4,
                   title: "Styling Sorcery – Part 2",
                   emoji: "🌀",
-                  desc: "Advanced CSS techniques and Bootstrap framework integration."
+                  desc: "Advanced CSS techniques and Bootstrap framework integration.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 5,
                   title: "The Utility Toolkit",
                   emoji: "⚙️",
-                  desc: "Tailwind CSS, modern tools, and efficient development workflows."
+                  desc: "Tailwind CSS, modern tools, and efficient development workflows.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 6,
                   title: "Architect's Mindset",
                   emoji: "🧠",
-                  desc: "Design thinking, user experience, and project planning strategies."
+                  desc: "Design thinking, user experience, and project planning strategies.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 7,
                   title: "Blueprint to Reality",
                   emoji: "🧩",
-                  desc: "Converting designs to code and building responsive layouts."
+                  desc: "Converting designs to code and building responsive layouts.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 8,
                   title: "Make It Yours",
                   emoji: "🖌️",
-                  desc: "Personal branding, typography, color theory, and unique design choices."
+                  desc: "Personal branding, typography, color theory, and unique design choices.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 9,
                   title: "Launch Sequence Initiated",
                   emoji: "🚀",
-                  desc: "Deployment, hosting, analytics, and performance optimization."
+                  desc: "Deployment, hosting, analytics, and performance optimization.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 },
                 {
                   number: 10,
                   title: "Own Your Web Identity",
                   emoji: "🎯",
-                  desc: "SEO, professional networking, and career advancement strategies."
+                  desc: "SEO, professional networking, and career advancement strategies.",
+                  showButtons: false,
+                  resourceUnlocked: false
                 }
               ].map((session, index) => (
                 <div 
@@ -259,10 +280,42 @@ export default function BuildPortfolio() {
                         <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                           {session.title}
                         </h3>
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      </div>                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                         {session.desc}
                       </p>
+                      
+                      {/* Action Buttons */}
+                      {session.showButtons && (
+                        <div className="flex gap-3 mt-4">                          {/* Resource Button */}
+                          <button
+                            onClick={() => {
+                              if (session.resourceUnlocked) {
+                                window.location.href = `/build-portfolio/session${session.number}/details`;
+                              }
+                            }}
+                            disabled={!session.resourceUnlocked}
+                            className={`flex items-center px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 ${
+                              session.resourceUnlocked
+                                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/50 cursor-pointer'
+                                : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 cursor-not-allowed opacity-75'
+                            }`}
+                          >
+                            <BookOpen className="w-3 h-3 mr-1" />
+                            {session.resourceUnlocked ? 'Details' : 'Unlock'}
+                          </button>
+                          
+                          {/* Feedback Button */}
+                          <button
+                            onClick={() => {
+                              window.location.href = `/build-portfolio/session${session.number}/review`;
+                            }}
+                            className="flex items-center px-3 py-1.5 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50 rounded-lg transition-all duration-200 cursor-pointer"
+                          >
+                            <MessageCircle className="w-3 h-3 mr-1" />
+                            Feedback
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
