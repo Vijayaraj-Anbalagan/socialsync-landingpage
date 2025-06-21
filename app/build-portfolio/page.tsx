@@ -197,24 +197,22 @@ export default function BuildPortfolio() {
                   showButtons: true,
                   resourceUnlocked: true,
                   reviewUnlocked: true
-                },
-                {
+                },                {
                   number: 3,
                   title: "Styling Sorcery – Part 1",
                   emoji: "🎨",
                   desc: "CSS fundamentals, layouts, and responsive design principles.",
-                  showButtons: false,
-                  resourceUnlocked: false,
-                  reviewUnlocked: false
-                },
-                {
+                  showButtons: true,
+                  resourceUnlocked: true,
+                  reviewUnlocked: true
+                },                {
                   number: 4,
                   title: "Styling Sorcery – Part 2",
                   emoji: "🌀",
                   desc: "Advanced CSS techniques and Bootstrap framework integration.",
-                  showButtons: false,
-                  resourceUnlocked: false,
-                  reviewUnlocked: false
+                  showButtons: true,
+                  resourceUnlocked: true,
+                  reviewUnlocked: true
                 },
                 {
                   number: 5,
