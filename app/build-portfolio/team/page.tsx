@@ -82,6 +82,17 @@ const TASKS = [
       { title: 'Behance', url: 'https://behance.net' },
       { title: 'Pinterest', url: 'https://pinterest.com' }
     ],
+    status: 'completed'
+  },  {
+    id: 'task-3',
+    title: 'GitHub Repository Setup',
+    description: 'Each team must:\n\n1️⃣ Create a public GitHub repository\n2️⃣ Add your selected website\'s index.html\n3️⃣ Add all team members (including senior) as collaborators\n4️⃣ Everyone must clone the repo to their local machine\n\n📬 Once done, share the repo link here in the group\n\n🎯 Scoring:\nEach valid collaborator = 10 marks\nMax team size = 6 → Max Score: 60 marks',
+    points: 60,
+    dueDate: '2025-06-23',
+    links: [
+      { title: 'GitHub', url: 'https://github.com' },
+      { title: 'Git Documentation', url: 'https://git-scm.com/doc' }
+    ],
     status: 'current'
   }
 ];
@@ -90,23 +101,27 @@ const TASKS = [
 const TEAM_SCORES = {
   'brainy-brunch': {
     'task-1': 10,
-    'task-2': 30  // Current task - not yet completed
+    'task-2': 30,
+    'task-3': 0  
   },
   'tech-geeks': {
     'task-1': 10,
-    'task-2': 20
+    'task-2': 20,
+    'task-3': 0
   },
   'buildforge': {
     'task-1': 10,
-    'task-2': 40
-  },
+    'task-2': 40,
+    'task-3': 0
+},
   'beyond-boundaries': {
     'task-1': 10,
-    'task-2': 10
+    'task-2': 10,
+    'task-3': 0
   }
 };
 
-const LAST_UPDATED = '2025-06-22T16:55:00Z';
+const LAST_UPDATED = '2025-06-23T23:20:00Z';
 
 export default function TeamPage() {
   const [activeTab, setActiveTab] = useState<'teams' | 'scoreboard' | 'tasks'>('teams');
@@ -319,12 +334,12 @@ export default function TeamPage() {
                     <div className="mt-4">
                       <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
                         <span>Overall Progress</span>
-                        <span>{Math.round((team.total / 50) * 100)}%</span>
+                        <span>{Math.round((team.total / 160) * 100)}%</span>
                       </div>
                       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                         <div
                           className="h-2 rounded-full transition-all duration-500 bg-blue-600"
-                          style={{ width: `${(team.total / 50) * 100}%` }}
+                          style={{ width: `${(team.total / 110) * 100}%` }}
                         ></div>
                       </div>
                     </div>
