@@ -15,7 +15,8 @@ import {
   Award,
   Laptop,
   UserPlus,
-  BookOpen
+  BookOpen,
+  Trophy
 } from "lucide-react";
 
 export default function BuildPortfolio() {
@@ -406,6 +407,29 @@ export default function BuildPortfolio() {
                 >
                   <UserPlus className="w-5 h-5 mr-2" />
                   Register Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </div>          {/* Team Dashboard Section */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="p-8 rounded-2xl border border-purple-200/50 dark:border-purple-800/50 bg-gradient-to-r from-purple-50/50 to-indigo-50/50 dark:from-purple-900/20 dark:to-indigo-900/20 backdrop-blur-sm hover:shadow-sm transition-all duration-300">
+              <div className="text-center">
+                <Trophy className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <h2 className="text-2xl font-semibold leading-tight tracking-tight mb-4">
+                  Team Dashboard
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">
+                  View team details, check the scoreboard leaderboard, and track current workshop tasks and progress.
+                </p>
+                
+                <Button
+                  onClick={() => window.location.href = "/build-portfolio/team"}
+                  size="lg"
+                  className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-8 py-3 rounded-xl transition-all duration-200 inline-flex items-center hover:scale-105 transform"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  View Team Dashboard
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
