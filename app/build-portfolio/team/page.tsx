@@ -170,27 +170,26 @@ export default function TeamPage() {
         {/* Background Effects */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[40vw] h-[40vw] bg-pink-200 dark:bg-pink-700/30 opacity-40 rounded-full blur-3xl animate-float-1"></div>
-          <div className="absolute bottom-0 right-1/4 translate-x-1/2 w-[40vw] h-[40vw] bg-blue-100 dark:bg-blue-900/30 opacity-40 rounded-full blur-3xl animate-float-2"></div>
-        </div>        <div className="relative z-10 px-4 py-20">
-          <div className="w-[60%] mx-auto px-4 py-8">          {/* Header */}
-          <div className="text-center mb-16 mt-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-700 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/50 text-sm font-medium mb-6">
+          <div className="absolute bottom-0 right-1/4 translate-x-1/2 w-[40vw] h-[40vw] bg-blue-100 dark:bg-blue-900/30 opacity-40 rounded-full blur-3xl animate-float-2"></div>        </div>        <div className="relative z-10 px-4 py-20">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16 mt-8">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-700 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/50 text-sm font-medium mb-4 sm:mb-6">
               <Users className="w-4 h-4" />
               Workshop Teams
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 sm:mb-6 px-2">
               Team <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dashboard</span>
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
               Track team progress, view leaderboard rankings, and manage workshop tasks in one place.
             </p>
           </div>          {/* Navigation Tabs */}
-          <div className="mb-12">
-            <div className="flex flex-wrap justify-center gap-4 p-2 rounded-2xl bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-800/50 backdrop-blur-sm">
+          <div className="mb-8 sm:mb-12">
+            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 p-2 rounded-2xl bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-800/50 backdrop-blur-sm">
               <Button
                 variant={activeTab === 'teams' ? 'default' : 'ghost'}
                 onClick={() => setActiveTab('teams')}
-                className={`flex items-center gap-2 rounded-xl px-6 py-3 font-medium transition-all duration-200 ${
+                className={`flex items-center justify-center gap-2 rounded-xl px-4 sm:px-6 py-3 font-medium transition-all duration-200 w-full sm:w-auto ${
                   activeTab === 'teams' 
                     ? 'bg-blue-600 text-white shadow-lg hover:bg-blue-700' 
                     : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20'
@@ -202,7 +201,7 @@ export default function TeamPage() {
               <Button
                 variant={activeTab === 'scoreboard' ? 'default' : 'ghost'}
                 onClick={() => setActiveTab('scoreboard')}
-                className={`flex items-center gap-2 rounded-xl px-6 py-3 font-medium transition-all duration-200 ${
+                className={`flex items-center justify-center gap-2 rounded-xl px-4 sm:px-6 py-3 font-medium transition-all duration-200 w-full sm:w-auto ${
                   activeTab === 'scoreboard' 
                     ? 'bg-blue-600 text-white shadow-lg hover:bg-blue-700' 
                     : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20'
@@ -214,7 +213,7 @@ export default function TeamPage() {
               <Button
                 variant={activeTab === 'tasks' ? 'default' : 'ghost'}
                 onClick={() => setActiveTab('tasks')}
-                className={`flex items-center gap-2 rounded-xl px-6 py-3 font-medium transition-all duration-200 ${
+                className={`flex items-center justify-center gap-2 rounded-xl px-4 sm:px-6 py-3 font-medium transition-all duration-200 w-full sm:w-auto ${
                   activeTab === 'tasks' 
                     ? 'bg-blue-600 text-white shadow-lg hover:bg-blue-700' 
                     : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20'
@@ -224,33 +223,30 @@ export default function TeamPage() {
                 Tasks
               </Button>
             </div>
-          </div>
-
-        {/* Team Details Tab */}
+          </div>        {/* Team Details Tab */}
         {activeTab === 'teams' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {TEAMS.map((team) => (              <Card key={team.id} className={`${team.color} ${team.borderColor} border backdrop-blur-sm hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-700/50 transition-all duration-300`}>
                 <CardHeader className={`${team.bgAccent} rounded-t-lg border-b ${team.borderColor}`}>
                   <CardTitle className={`${team.accentColor} text-2xl font-bold text-center`}>
                     {team.name}
                   </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="space-y-4">
+                </CardHeader>                <CardContent className="p-4 sm:p-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {/* Team Lead */}
-                    <div className="flex items-center gap-3">
-                      <Badge className="bg-yellow-500 hover:bg-yellow-600 text-white">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                      <Badge className="bg-yellow-500 hover:bg-yellow-600 text-white w-fit">
                         <Crown className="w-3 h-3 mr-1" />
                         Team Lead
                       </Badge>
-                      <span className={`${team.accentColor} font-semibold text-lg`}>
+                      <span className={`${team.accentColor} font-semibold text-base sm:text-lg`}>
                         {team.lead}
                       </span>
                     </div>
 
                     {/* Senior */}
-                    <div className="flex items-center gap-3">
-                      <Badge className="bg-purple-500 hover:bg-purple-600 text-white">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                      <Badge className="bg-purple-500 hover:bg-purple-600 text-white w-fit">
                         <Star className="w-3 h-3 mr-1" />
                         Senior
                       </Badge>
@@ -264,7 +260,7 @@ export default function TeamPage() {
                       <h4 className={`${team.accentColor} font-medium mb-2 flex items-center gap-2`}>
                         <Users className="w-4 h-4" />
                         Team Members
-                      </h4>                      <div className="grid grid-cols-2 gap-2">
+                      </h4>                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {team.members.map((member, index) => (
                           <div
                             key={index}
@@ -299,28 +295,27 @@ export default function TeamPage() {
             {/* Leaderboard */}
             <div className="grid gap-4">
               {teamTotals.map((team, index) => (
-                <Card key={team.id} className={`${team.color} ${team.borderColor} border backdrop-blur-sm hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-700/50 transition-all duration-300`}>
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
+                <Card key={team.id} className={`${team.color} ${team.borderColor} border backdrop-blur-sm hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-700/50 transition-all duration-300`}>                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <div className="flex items-center gap-2">
                           {getRankIcon(index)}
-                          <span className="text-2xl font-bold text-gray-700 dark:text-gray-300">#{index + 1}</span>
+                          <span className="text-xl sm:text-2xl font-bold text-gray-700 dark:text-gray-300">#{index + 1}</span>
                         </div>                        <div>
-                          <h3 className={`${team.accentColor} text-xl font-bold`}>
+                          <h3 className={`${team.accentColor} text-lg sm:text-xl font-bold`}>
                             {team.name}
                           </h3>
-                          <p className="text-gray-600 dark:text-gray-400">Led by {team.lead}</p>
+                          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Led by {team.lead}</p>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className={`${team.accentColor} text-3xl font-bold`}>
+                      <div className="text-center sm:text-right">
+                        <div className={`${team.accentColor} text-2xl sm:text-3xl font-bold`}>
                           {team.total}
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">points</div>
                       </div>
                     </div>                    {/* Task Breakdown */}
-                    <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                       {TASKS.map((task, taskIndex) => (
                         <div key={task.id} className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-lg p-2 text-center border border-gray-200/50 dark:border-gray-700/50">
                           <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Task {taskIndex + 1}</div>
@@ -360,19 +355,18 @@ export default function TeamPage() {
                     <Target className="w-5 h-5" />
                     Current Task
                   </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
+                </CardHeader>                <CardContent className="p-4 sm:p-6">
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold text-blue-800 dark:text-blue-200 mb-2">
                         {currentTask.title}
-                      </h3>                      <p className="text-gray-700 dark:text-gray-300 text-lg whitespace-pre-line">
+                      </h3>                      <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg whitespace-pre-line">
                         {currentTask.description}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-4 items-center">
-                      <Badge className="bg-blue-600 dark:bg-blue-500 text-white">
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 sm:items-center">
+                      <Badge className="bg-blue-600 dark:bg-blue-500 text-white w-fit">
                         {currentTask.points} Points
                       </Badge>
                       <div className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
@@ -420,24 +414,23 @@ export default function TeamPage() {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">Completed Tasks</h3>
                 {completedTasks.map((task, index) => (
-                  <Card key={task.id} className="bg-gray-50/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start">
+                  <Card key={task.id} className="bg-gray-50/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 backdrop-blur-sm">                    <CardContent className="p-3 sm:p-4">
+                      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-3">
                         <div className="flex-1">
-                          <h4 className="font-semibold text-gray-800 dark:text-gray-200">
+                          <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-sm sm:text-base">
                             Task {index + 1}: {task.title}
-                          </h4>                          <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 whitespace-pre-line">
+                          </h4>                          <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-1 whitespace-pre-line">
                             {task.description}
                           </p>
-                          <div className="flex gap-2 mt-2">
-                            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs">
                               {task.points} Points
                             </Badge>
-                            <Badge variant="outline" className="text-green-600 dark:text-green-400 border-green-300 dark:border-green-600">
+                            <Badge variant="outline" className="text-green-600 dark:text-green-400 border-green-300 dark:border-green-600 text-xs">
                               ✓ Completed
                             </Badge>                          </div>
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                        <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 lg:text-right">
                           Due: {formatDate(task.dueDate)}
                         </div>
                       </div>
