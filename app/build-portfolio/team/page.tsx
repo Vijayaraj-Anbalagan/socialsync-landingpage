@@ -102,11 +102,11 @@ const TEAM_SCORES = {
   },
   'beyond-boundaries': {
     'task-1': 10,
-    'task-2': 0
+    'task-2': 10
   }
 };
 
-const LAST_UPDATED = '2025-06-22T16:40:00Z';
+const LAST_UPDATED = '2025-06-22T16:55:00Z';
 
 export default function TeamPage() {
   const [activeTab, setActiveTab] = useState<'teams' | 'scoreboard' | 'tasks'>('teams');
